@@ -1,12 +1,14 @@
 import oracle.jdbc.OracleConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
-@SpringBootApplication
 public class Main {
 
     final static Logger LOG = LoggerFactory.getLogger(Main.class);
@@ -20,7 +22,8 @@ public class Main {
         Class.forName("oracle.jdbc.driver.OracleDriver");
 
         if (args.length != 3) {
-            LOG.error("Invalid number of arguments: Must provide 3 arguments in the format: <schema_name> <schema_password> jdbc:oracle:thin:@//<host>:<port>/<SID>");
+            LOG.error("Invalid number of arguments: Must provide 3 arguments in the format: <username> " +
+                "<password> jdbc:oracle:thin:@//<host>:<port>/<SID>");
             return;
         }
 

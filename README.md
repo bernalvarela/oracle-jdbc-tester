@@ -12,7 +12,7 @@ Clone this repository and then run below Maven command to build the executable J
 mvn clean package
 ```
 
-Alternatively, download the JAR file from [release](https://github.com/aimtiaz11/jdbc-tester/releases) page. 
+Alternatively, download the JAR file from [release](https://github.com/bernalvarela/oracle-jdbc-tester/releases) page. 
 
 Execute the JAR file with the following 3 parameters with schema name, password and JDBC connection string:
 

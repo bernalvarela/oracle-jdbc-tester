@@ -6,7 +6,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="dev.bernal" level="DEBUG" additivity="false">
+        <Logger name="dev.bernalvarela" level="DEBUG" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
         <Root level="ERROR">

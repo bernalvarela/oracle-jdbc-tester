@@ -1,4 +1,4 @@
-package dev.bernal;
+package dev.bernalvarela;
 
 import oracle.jdbc.OracleConnection;
 import org.slf4j.Logger;

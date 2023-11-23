@@ -1,3 +1,5 @@
+package dev.bernal;
+
 import oracle.jdbc.OracleConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,11 +32,11 @@ public class Main {
         Properties properties = new Properties();
         properties.setProperty("user", args[0]);
         properties.setProperty("password", args[1]);
-        properties.setProperty(OracleConnection.CONNECTION_PROPERTY_THIN_NET_CONNECT_TIMEOUT, "10000");
+        properties.setProperty(OracleConnection.CONNECTION_PROPERTY_THIN_NET_CONNECT_TIMEOUT, "2000");
 
         try {
             LOG.info("****** Starting JDBC Connection test *******");
-            String sqlQuery = "select sysdate from dual";
+            String sqlQuery = "SELECT * FROM v$version";
 
             Connection conn = DriverManager.getConnection(args[2], properties);
             conn.setAutoCommit(false);
@@ -42,8 +44,9 @@ public class Main {
             LOG.info("Running SQL query: [{}]", sqlQuery);
             ResultSet resultSet = statement.executeQuery(sqlQuery);
 
+            LOG.info("Result of SQL query");
             while (resultSet.next()) {
-                LOG.info("Result of SQL query: [{}]", resultSet.getString(1));
+                LOG.info("{}", resultSet.getString(1));
             }
 
             statement.close();

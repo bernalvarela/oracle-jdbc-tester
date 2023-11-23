@@ -17,7 +17,7 @@ Alternatively, download the JAR file from [release](https://github.com/aimtiaz11
 Execute the JAR file with the following 3 parameters with schema name, password and JDBC connection string:
 
 ```sh
-java -jar target/jdbc-tester-1.1.jar <schema_name> <schema_password> jdbc:oracle:thin:@//<host>:<port>/<SID>
+java -jar target/jdbc-tester-1.1.jar <username> <password> jdbc:oracle:thin:@//<host>:<port>/<SID>
 ```
 
 ### Secure your credentials
@@ -33,11 +33,11 @@ java -jar target/jdbc-tester-1.1.jar "$DB_USER" "$DB_PASS" jdbc:oracle:thin:@//<
 
 ## How it works
 
-The application connects to the Oracle database and executes a single SQL query: `select sysdate from dual` and prints the output. 
+The application connects to the Oracle database and executes a single SQL query: `SELECT * FROM v$version` and prints the output. 
 
 If it cannot connect for whatever reason, it will fail by logging an error message.
 
-There is a hardcoded connection timeout set to 10 seconds.
+There is a hardcoded connection timeout set to 2 seconds.
 
 ## License
 

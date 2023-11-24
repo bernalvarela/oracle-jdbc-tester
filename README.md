@@ -17,7 +17,7 @@ Alternatively, download the JAR file from [release](https://github.com/bernalvar
 Execute the JAR file with the following 3 parameters with schema name, password and JDBC connection string:
 
 ```sh
-java -jar target/jdbc-tester-1.3.0.jar <username> <password> jdbc:oracle:thin:@//<host>:<port>/<SID>
+java -jar target/jdbc-tester-1.5.0.jar -u <username> -p <password> -h <host> -po <port> -s <SIS>
 ```
 
 ### Secure your credentials
@@ -28,7 +28,7 @@ This prevents DB credentials being stored in `~/.bash_history`.
 
 
 ```sh
-java -jar target/jdbc-tester-1.3.0.jar "$DB_USER" "$DB_PASS" jdbc:oracle:thin:@//<host>:<port>/<SID>
+java -jar target/jdbc-tester-1.5.0.jar -u "$DB_USER" -p "$DB_PASS" -h <host> -po <port> -s <SIS>
 ```
 
 ## How it works

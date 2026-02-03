@@ -1,0 +1,129 @@
+name: Build and Release All Driver Versions
+
+on:
+  release:
+    types: [created, published]
+  workflow_dispatch:
+    inputs:
+      version_tag:
+        description: 'Release version tag (e.g., v1.5.0)'
+        required: true
+        type: string
+
+jobs:
+  build-all-versions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    strategy:
+      matrix:
+        driver-version:
+          - { profile: 'ojdbc-23.26.0.0.0', version: '23.26.0.0.0', label: '23ai-Latest' }
+          - { profile: 'ojdbc-23.9.0.25.07', version: '23.9.0.25.07', label: '23ai' }
+          - { profile: 'ojdbc-23.3.0.23.09', version: '23.3.0.23.09', label: '23c' }
+          - { profile: 'ojdbc-21.20.0.0', version: '21.20.0.0', label: '21c-Latest' }
+          - { profile: 'ojdbc-21.13.0.0', version: '21.13.0.0', label: '21c' }
+          - { profile: 'ojdbc-21.1.0.0', version: '21.1.0.0', label: '21c' }
+          - { profile: 'ojdbc-19.29.0.0', version: '19.29.0.0', label: '19c-Latest' }
+          - { profile: 'ojdbc-19.21.0.0', version: '19.21.0.0', label: '19c' }
+          - { profile: 'ojdbc-18.15.0.0', version: '18.15.0.0', label: '18c-Latest' }
+          - { profile: 'ojdbc-12.2.0.1', version: '12.2.0.1', label: '12c' }
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build with Maven for driver ${{ matrix.driver-version.version }}
+        run: mvn clean package -P${{ matrix.driver-version.profile }}
+
+      - name: Get JAR filename
+        id: jar-file
+        run: |
+          JAR_FILE=$(ls target/*.jar | grep -v "original" | head -n 1)
+          echo "jar_path=$JAR_FILE" >> $GITHUB_OUTPUT
+          echo "jar_name=$(basename $JAR_FILE)" >> $GITHUB_OUTPUT
+
+      - name: Upload JAR as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jdbc-tester-${{ matrix.driver-version.version }}
+          path: ${{ steps.jar-file.outputs.jar_path }}
+          retention-days: 7
+
+      - name: Upload to Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ steps.jar-file.outputs.jar_path }}
+          tag_name: ${{ github.event.release.tag_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload to Release (manual trigger)
+        if: github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ steps.jar-file.outputs.jar_path }}
+          tag_name: ${{ inputs.version_tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  create-release-notes:
+    needs: build-all-versions
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Update Release Notes
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.version_tag }}
+          append_body: true
+          body: |
+
+            ## 📦 Available Driver Versions
+
+            This release includes builds with 10 different Oracle JDBC driver versions:
+
+            ### 23.x Series (Oracle Database 23ai/23c)
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-23.26.0.0.0.jar` - Latest 23ai
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-23.9.0.25.07.jar`
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-23.3.0.23.09.jar`
+
+            ### 21.x Series (Oracle Database 21c)
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-21.20.0.0.jar` - Latest 21c
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-21.13.0.0.jar`
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-21.1.0.0.jar`
+
+            ### 19.x Series (Oracle Database 19c)
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-19.29.0.0.jar` - Latest 19c
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-19.21.0.0.jar`
+
+            ### 18.x Series (Oracle Database 18c)
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-18.15.0.0.jar` - Latest 18c
+
+            ### 12.x Series (Oracle Database 12c)
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-12.2.0.1.jar`
+
+            ---
+
+            **Note:** All JARs are standalone executables with all dependencies included.
+            Choose the version that matches your Oracle Database version.
+
+            For more information, see [BUILD_GUIDE.md](https://github.com/${{ github.repository }}/blob/master/BUILD_GUIDE.md) and [AVAILABLE_VERSIONS.md](https://github.com/${{ github.repository }}/blob/master/AVAILABLE_VERSIONS.md).
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

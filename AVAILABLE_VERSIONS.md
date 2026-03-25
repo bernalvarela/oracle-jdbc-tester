@@ -93,7 +93,6 @@ This document lists the available versions of Oracle JDBC drivers in Maven Centr
 
 | Version | Profile ID | Included in pom.xml |
 |---------|-----------|---------------------|
-| 12.1.0.2 | `ojdbc6-12.1.0.2` | ✅ |
 | 11.2.0.4 | `ojdbc6-11.2.0.4` | ✅ |
 
 ---
@@ -113,8 +112,8 @@ mvn clean package -Pcustom -Dojdbc.version=19.27.0.0
 For a custom **ojdbc6** version, override the artifact ID:
 
 ```bash
-# Example with ojdbc6 version 12.1.0.2
-mvn clean package -Pcustom -Doracle.ojdbc.artifactId=ojdbc6 -Dojdbc.version=12.1.0.2
+# Example with ojdbc6 version 11.2.0.4
+mvn clean package -Pcustom -Doracle.ojdbc.artifactId=ojdbc6 -Dojdbc.version=11.2.0.4
 ```
 
 The generated JAR will be named: `jdbc-tester-1.7.0-<version>.jar`

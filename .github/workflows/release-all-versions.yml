@@ -30,7 +30,6 @@ jobs:
           - { profile: 'ojdbc-19.21.0.0', version: '19.21.0.0', label: '19c' }
           - { profile: 'ojdbc-18.15.0.0', version: '18.15.0.0', label: '18c-Latest' }
           - { profile: 'ojdbc-12.2.0.1', version: '12.2.0.1', label: '12c' }
-          - { profile: 'ojdbc6-12.1.0.2', version: 'ojdbc6-12.1.0.2', label: '12c-ojdbc6' }
           - { profile: 'ojdbc6-11.2.0.4', version: 'ojdbc6-11.2.0.4', label: '11g-ojdbc6' }
 
     steps:

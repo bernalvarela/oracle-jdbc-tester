@@ -339,19 +339,6 @@
         <!-- ========================================== -->
 
         <!-- ========================================== -->
-        <!-- ojdbc6 - Serie 12.x (Oracle Database 12c) -->
-        <!-- ========================================== -->
-
-        <profile>
-            <id>ojdbc6-12.1.0.2</id>
-            <properties>
-                <oracle.ojdbc.artifactId>ojdbc6</oracle.ojdbc.artifactId>
-                <oracle.ojdbc.version>12.1.0.2</oracle.ojdbc.version>
-                <driver.version.classifier>-ojdbc6-12.1.0.2</driver.version.classifier>
-            </properties>
-        </profile>
-
-        <!-- ========================================== -->
         <!-- ojdbc6 - Serie 11.x (Oracle Database 11g) -->
         <!-- ========================================== -->
 

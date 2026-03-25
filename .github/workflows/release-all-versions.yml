@@ -120,9 +120,6 @@ jobs:
             ### ojdbc8 — 12.x Series (Oracle Database 12c)
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-12.2.0.1.jar`
 
-            ### ojdbc6 — 12.x Series (Oracle Database 12c)
-            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-ojdbc6-12.1.0.2.jar`
-
             ### ojdbc6 — 11.x Series (Oracle Database 11g)
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-ojdbc6-11.2.0.4.jar`
 

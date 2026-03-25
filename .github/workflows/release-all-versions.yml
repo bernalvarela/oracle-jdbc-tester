@@ -30,6 +30,8 @@ jobs:
           - { profile: 'ojdbc-19.21.0.0', version: '19.21.0.0', label: '19c' }
           - { profile: 'ojdbc-18.15.0.0', version: '18.15.0.0', label: '18c-Latest' }
           - { profile: 'ojdbc-12.2.0.1', version: '12.2.0.1', label: '12c' }
+          - { profile: 'ojdbc6-12.1.0.2', version: 'ojdbc6-12.1.0.2', label: '12c-ojdbc6' }
+          - { profile: 'ojdbc6-11.2.0.4', version: 'ojdbc6-11.2.0.4', label: '11g-ojdbc6' }
 
     steps:
       - name: Checkout code
@@ -97,27 +99,33 @@ jobs:
 
             ## 📦 Available Driver Versions
 
-            This release includes builds with 10 different Oracle JDBC driver versions:
+            This release includes builds with 12 different Oracle JDBC driver versions:
 
-            ### 23.x Series (Oracle Database 23ai/23c)
+            ### ojdbc8 — 23.x Series (Oracle Database 23ai/23c)
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-23.26.0.0.0.jar` - Latest 23ai
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-23.9.0.25.07.jar`
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-23.3.0.23.09.jar`
 
-            ### 21.x Series (Oracle Database 21c)
+            ### ojdbc8 — 21.x Series (Oracle Database 21c)
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-21.20.0.0.jar` - Latest 21c
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-21.13.0.0.jar`
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-21.1.0.0.jar`
 
-            ### 19.x Series (Oracle Database 19c)
+            ### ojdbc8 — 19.x Series (Oracle Database 19c)
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-19.29.0.0.jar` - Latest 19c
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-19.21.0.0.jar`
 
-            ### 18.x Series (Oracle Database 18c)
+            ### ojdbc8 — 18.x Series (Oracle Database 18c)
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-18.15.0.0.jar` - Latest 18c
 
-            ### 12.x Series (Oracle Database 12c)
+            ### ojdbc8 — 12.x Series (Oracle Database 12c)
             - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-12.2.0.1.jar`
+
+            ### ojdbc6 — 12.x Series (Oracle Database 12c)
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-ojdbc6-12.1.0.2.jar`
+
+            ### ojdbc6 — 11.x Series (Oracle Database 11g)
+            - `jdbc-tester-${{ github.event.release.tag_name || inputs.version_tag }}-ojdbc6-11.2.0.4.jar`
 
             ---
 

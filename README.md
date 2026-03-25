@@ -29,7 +29,7 @@ Execute the JAR file with the following 5 parameters:
 * --url. Database url. Required. host:port:/service_name or host:port:SID
 
 ```sh
-java -jar target/jdbc-tester-1.6.0-23.26.0.0.0.jar -u <username> -p <password> --url <url>
+java -jar target/jdbc-tester-1.7.0-23.26.0.0.0.jar -u <username> -p <password> --url <url>
 ```
 
 ## Multiple Oracle JDBC Driver Versions
@@ -88,7 +88,7 @@ This prevents DB credentials being stored in `~/.bash_history`.
 
 
 ```sh
-java -jar target/jdbc-tester-1.6.0-23.26.0.0.0.jar -u "$DB_USER" -p "$DB_PASS" --url <url>
+java -jar target/jdbc-tester-1.7.0-23.26.0.0.0.jar -u "$DB_USER" -p "$DB_PASS" --url <url>
 ```
 
 ## How it works

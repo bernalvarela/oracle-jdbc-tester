@@ -4,44 +4,52 @@ set -e
 echo "Building Oracle JDBC Tester with multiple driver versions..."
 echo ""
 
-echo "[1/10] Building with Oracle JDBC 23.26.0.0.0 (23ai - Latest)..."
+echo "[1/12] Building with Oracle JDBC 23.26.0.0.0 (23ai - Latest)..."
 mvn clean package -Pojdbc-23.26.0.0.0
 
 echo ""
-echo "[2/10] Building with Oracle JDBC 23.9.0.25.07..."
+echo "[2/12] Building with Oracle JDBC 23.9.0.25.07..."
 mvn clean package -Pojdbc-23.9.0.25.07
 
 echo ""
-echo "[3/10] Building with Oracle JDBC 23.3.0.23.09..."
+echo "[3/12] Building with Oracle JDBC 23.3.0.23.09..."
 mvn clean package -Pojdbc-23.3.0.23.09
 
 echo ""
-echo "[4/10] Building with Oracle JDBC 21.20.0.0 (21c - Latest)..."
+echo "[4/12] Building with Oracle JDBC 21.20.0.0 (21c - Latest)..."
 mvn clean package -Pojdbc-21.20.0.0
 
 echo ""
-echo "[5/10] Building with Oracle JDBC 21.13.0.0..."
+echo "[5/12] Building with Oracle JDBC 21.13.0.0..."
 mvn clean package -Pojdbc-21.13.0.0
 
 echo ""
-echo "[6/10] Building with Oracle JDBC 21.1.0.0..."
+echo "[6/12] Building with Oracle JDBC 21.1.0.0..."
 mvn clean package -Pojdbc-21.1.0.0
 
 echo ""
-echo "[7/10] Building with Oracle JDBC 19.29.0.0 (19c - Latest)..."
+echo "[7/12] Building with Oracle JDBC 19.29.0.0 (19c - Latest)..."
 mvn clean package -Pojdbc-19.29.0.0
 
 echo ""
-echo "[8/10] Building with Oracle JDBC 19.21.0.0..."
+echo "[8/12] Building with Oracle JDBC 19.21.0.0..."
 mvn clean package -Pojdbc-19.21.0.0
 
 echo ""
-echo "[9/10] Building with Oracle JDBC 18.15.0.0 (18c - Latest)..."
+echo "[9/12] Building with Oracle JDBC 18.15.0.0 (18c - Latest)..."
 mvn clean package -Pojdbc-18.15.0.0
 
 echo ""
-echo "[10/10] Building with Oracle JDBC 12.2.0.1 (12c)..."
+echo "[10/12] Building with Oracle JDBC 12.2.0.1 (ojdbc8 - 12c)..."
 mvn clean package -Pojdbc-12.2.0.1
+
+echo ""
+echo "[11/12] Building with Oracle JDBC6 12.1.0.2 (ojdbc6 - 12c)..."
+mvn clean package -Pojdbc6-12.1.0.2
+
+echo ""
+echo "[12/12] Building with Oracle JDBC6 11.2.0.4 (ojdbc6 - 11g)..."
+mvn clean package -Pojdbc6-11.2.0.4
 
 echo ""
 echo "================================"

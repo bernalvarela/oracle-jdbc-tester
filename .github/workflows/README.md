@@ -51,16 +51,16 @@ This directory contains GitHub Actions workflows for automated building and rele
 
 1. Create and push a new tag:
    ```bash
-   git tag v1.6.0
-   git push origin v1.6.0
+   git tag v1.7.0
+   git push origin v1.7.0
    ```
 
 2. Go to GitHub → Releases → "Draft a new release"
 
-3. Select the tag you just created (e.g., `v1.6.0`)
+3. Select the tag you just created (e.g., `v1.7.0`)
 
 4. Fill in:
-   - **Release title:** e.g., "Release 1.6.0"
+   - **Release title:** e.g., "Release 1.7.0"
    - **Description:** Your release notes
 
 5. Click "Publish release"
@@ -78,7 +78,7 @@ If you need to rebuild a release or create JARs without creating a new release:
 
 2. Click "Run workflow"
 
-3. Enter the version tag (e.g., `v1.6.0`)
+3. Enter the version tag (e.g., `v1.7.0`)
 
 4. Click "Run workflow"
 
@@ -91,17 +91,17 @@ The workflow will build all versions and attach them to the specified release ta
 After the workflow completes, the release will contain:
 
 ```
-📦 Release v1.6.0
-├── jdbc-tester-1.6.0-23.26.0.0.0.jar
-├── jdbc-tester-1.6.0-23.9.0.25.07.jar
-├── jdbc-tester-1.6.0-23.3.0.23.09.jar
-├── jdbc-tester-1.6.0-21.20.0.0.jar
-├── jdbc-tester-1.6.0-21.13.0.0.jar
-├── jdbc-tester-1.6.0-21.1.0.0.jar
-├── jdbc-tester-1.6.0-19.29.0.0.jar
-├── jdbc-tester-1.6.0-19.21.0.0.jar
-├── jdbc-tester-1.6.0-18.15.0.0.jar
-└── jdbc-tester-1.6.0-12.2.0.1.jar
+📦 Release v1.7.0
+├── jdbc-tester-1.7.0-23.26.0.0.0.jar
+├── jdbc-tester-1.7.0-23.9.0.25.07.jar
+├── jdbc-tester-1.7.0-23.3.0.23.09.jar
+├── jdbc-tester-1.7.0-21.20.0.0.jar
+├── jdbc-tester-1.7.0-21.13.0.0.jar
+├── jdbc-tester-1.7.0-21.1.0.0.jar
+├── jdbc-tester-1.7.0-19.29.0.0.jar
+├── jdbc-tester-1.7.0-19.21.0.0.jar
+├── jdbc-tester-1.7.0-18.15.0.0.jar
+└── jdbc-tester-1.7.0-12.2.0.1.jar
 ```
 
 ---

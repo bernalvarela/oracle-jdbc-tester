@@ -54,12 +54,12 @@ mvn clean package -Pcustom -Dojdbc.version=19.27.0.0
 mvn clean package -Pcustom -Dojdbc.version=23.8.0.25.04
 ```
 
-The generated JAR will have the format: `jdbc-tester-1.6.0-<driver-version>.jar`
+The generated JAR will have the format: `jdbc-tester-1.7.0-<driver-version>.jar`
 
 **Examples of generated names:**
-- `jdbc-tester-1.6.0-23.26.0.0.0.jar`
-- `jdbc-tester-1.6.0-21.18.0.0.jar`
-- `jdbc-tester-1.6.0-19.29.0.0.jar`
+- `jdbc-tester-1.7.0-23.26.0.0.0.jar`
+- `jdbc-tester-1.7.0-21.18.0.0.jar`
+- `jdbc-tester-1.7.0-19.29.0.0.jar`
 
 ## Building Multiple Versions
 
@@ -133,10 +133,10 @@ To verify which version of the Oracle JDBC driver is included in a JAR:
 
 ```bash
 # Extract and view driver properties
-unzip -p target/jdbc-tester-1.6.0-23.26.0.0.0.jar META-INF/MANIFEST.MF
+unzip -p target/jdbc-tester-1.7.0-23.26.0.0.0.jar META-INF/MANIFEST.MF
 
 # View included Oracle classes
-jar -tf target/jdbc-tester-1.6.0-23.26.0.0.0.jar | grep oracle/jdbc
+jar -tf target/jdbc-tester-1.7.0-23.26.0.0.0.jar | grep oracle/jdbc
 ```
 
 ## Project Structure

@@ -1,6 +1,6 @@
-# All Available Oracle JDBC Driver (ojdbc8) Versions
+# All Available Oracle JDBC Driver Versions (ojdbc8 & ojdbc6)
 
-This document lists the **73 versions** of the Oracle JDBC driver (ojdbc8) available in Maven Central.
+This document lists the available versions of Oracle JDBC drivers in Maven Central.
 
 ## 23.x Series (Oracle Database 23ai/23c) - 9 versions
 
@@ -34,8 +34,8 @@ This document lists the **73 versions** of the Oracle JDBC driver (ojdbc8) avail
 | 21.9.0.0 | `ojdbc-21.9.0.0` | ❌ Use custom profile |
 | 21.8.0.0 | `ojdbc-21.8.0.0` | ❌ Use custom profile |
 | 21.7.0.0 | `ojdbc-21.7.0.0` | ❌ Use custom profile |
-| 21.6.0.0.1 | `ojdbc-21.6.0.0.1` | ❌ Use custom profile |
-| 21.6.0.0 | `ojdbc-21.6.0.0` | ❌ Use custom profile |
+| 21.7.0.0.1 | `ojdbc-21.7.0.0.1` | ❌ Use custom profile |
+| 21.7.0.0 | `ojdbc-21.7.0.0` | ❌ Use custom profile |
 | 21.5.0.0 | `ojdbc-21.5.0.0` | ✅ |
 | 21.4.0.0.1 | `ojdbc-21.4.0.0.1` | ❌ Use custom profile |
 | 21.4.0.0 | `ojdbc-21.4.0.0` | ❌ Use custom profile |
@@ -89,24 +89,40 @@ This document lists the **73 versions** of the Oracle JDBC driver (ojdbc8) avail
 
 ---
 
-## How to use versions not included in profiles
+## ojdbc6 Versions (Oracle Database 11g / 12c)
 
-For any version not included in `pom.xml`, use the `custom` profile:
-
-```bash
-# Example with version 21.18.0.0
-mvn clean package -Pcustom -Dojdbc.version=21.18.0.0
-
-# Example with version 19.27.0.0
-mvn clean package -Pcustom -Dojdbc.version=19.27.0.0
-```
-
-The generated JAR will be named: `jdbc-tester-1.6.0-<version>.jar`
+| Version | Profile ID | Included in pom.xml |
+|---------|-----------|---------------------|
+| 12.1.0.2 | `ojdbc6-12.1.0.2` | ✅ |
+| 11.2.0.4 | `ojdbc6-11.2.0.4` | ✅ |
 
 ---
 
-**Total available versions:** 73
-**Versions included as profiles:** 30
-**Custom profile usage:** Any of the 73 versions
+## How to use versions not included in profiles
+
+For any ojdbc8 version not included in `pom.xml`, use the `custom` profile:
+
+```bash
+# Example with ojdbc8 version 21.18.0.0
+mvn clean package -Pcustom -Dojdbc.version=21.18.0.0
+
+# Example with ojdbc8 version 19.27.0.0
+mvn clean package -Pcustom -Dojdbc.version=19.27.0.0
+```
+
+For a custom **ojdbc6** version, override the artifact ID:
+
+```bash
+# Example with ojdbc6 version 12.1.0.2
+mvn clean package -Pcustom -Doracle.ojdbc.artifactId=ojdbc6 -Dojdbc.version=12.1.0.2
+```
+
+The generated JAR will be named: `jdbc-tester-1.7.0-<version>.jar`
+
+---
+
+**Versions included as profiles (ojdbc8):** 30
+**Versions included as profiles (ojdbc6):** 2
+**Custom profile usage:** Any version from Maven Central
 
 For more details on how to build, see [BUILD_GUIDE.md](BUILD_GUIDE.md).

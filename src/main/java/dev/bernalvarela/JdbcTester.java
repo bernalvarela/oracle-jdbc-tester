@@ -15,7 +15,7 @@ import java.util.concurrent.Callable;
 
 @CommandLine.Command(
     name = "Oracle jdbc tester",
-    version = "1.6.0",
+    version = "1.7.0",
     description = "Checks an Oracle database server connection"
 )
 public class JdbcTester implements Callable<Integer> {

@@ -26,9 +26,7 @@ Execute the JAR file with the following 5 parameters:
 
 * -u / --username. Database username. Required.
 * -p / --password. Database password. Required.
-* -h / --host. Database host. Optional. localhost as default value.
-* -po / --port. Database port. Optional. 1521 as default value.
-* -s / --sid. Database SID. Optional. xe as default value.
+* --url. Database url. Required. host:port:/service_name or host:port:SID
 
 ```sh
 java -jar target/jdbc-tester-1.6.0-23.26.0.0.0.jar -u <username> -p <password> --url <url>

@@ -101,7 +101,7 @@ mvn clean package -Pcustom -Dojdbc.version=21.18.0.0
 mvn clean package -Pcustom -Dojdbc.version=19.27.0.0
 ```
 
-The generated JAR will be named: `jdbc-tester-1.5.1-<version>.jar`
+The generated JAR will be named: `jdbc-tester-1.6.0-<version>.jar`
 
 ---
 

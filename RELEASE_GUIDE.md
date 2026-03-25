@@ -9,17 +9,17 @@ This guide explains how to create new releases with automated builds for all Ora
 Edit `pom.xml` and update the version number:
 
 ```xml
-<version>1.5.1</version>  <!-- Change this -->
+<version>1.6.0</version>  <!-- Change this -->
 ```
 
 ### Step 2: Commit and Tag
 
 ```bash
 git add pom.xml
-git commit -m "Bump version to 1.5.1"
-git tag v1.5.1
+git commit -m "Bump version to 1.6.0"
+git tag v1.6.0
 git push origin master
-git push origin v1.5.1
+git push origin v1.6.0
 ```
 
 ### Step 3: Create Release on GitHub
@@ -27,8 +27,8 @@ git push origin v1.5.1
 1. Go to: https://github.com/bernalvarela/oracle-jdbc-tester/releases/new
 
 2. Fill in the form:
-   - **Choose a tag:** Select `v1.5.1` (the tag you just pushed)
-   - **Release title:** `Release 1.5.1`
+   - **Choose a tag:** Select `v1.6.0` (the tag you just pushed)
+   - **Release title:** `Release 1.6.0`
    - **Description:** Use the [RELEASE_TEMPLATE.md](.github/RELEASE_TEMPLATE.md) as a starting point
 
 3. Click **"Publish release"**
@@ -67,7 +67,7 @@ If you need to rebuild a release or add JARs to an existing release:
 
 2. Click **"Run workflow"**
 
-3. Enter the version tag (e.g., `v1.5.1`)
+3. Enter the version tag (e.g., `v1.6.0`)
 
 4. Click **"Run workflow"**
 
@@ -94,7 +94,7 @@ After release is published:
 
 ### Workflow doesn't start
 
-- Ensure the tag is pushed: `git push origin v1.5.1`
+- Ensure the tag is pushed: `git push origin v1.6.0`
 - Check the workflow file exists: `.github/workflows/release-all-versions.yml`
 - Verify you published the release (not just saved as draft)
 

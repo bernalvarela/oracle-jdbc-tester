@@ -15,7 +15,7 @@ import java.util.concurrent.Callable;
 
 @CommandLine.Command(
     name = "Oracle jdbc tester",
-    version = "1.5.0",
+    version = "1.6.0",
     description = "Checks an Oracle database server connection"
 )
 public class JdbcTester implements Callable<Integer> {
@@ -34,21 +34,11 @@ public class JdbcTester implements Callable<Integer> {
     private String password;
 
     @CommandLine.Option(
-        names = {"-h", "--host"},
-        description = "Database host. Default value localhost.",
-        defaultValue = "localhost"
+        names = {"--url"},
+        description = "Database url. host:port:/service_name or host:port:SID",
+        required = true
     )
-    private String host;
-
-    @CommandLine.Option(
-        names = {"-po", "--port"},
-        description = "Database port. Default value 1521.",
-        defaultValue = "1521"
-    )
-    private String port;
-
-    @CommandLine.Option(names = {"-s", "--sid"}, description = "Database sid. Default value xe.", defaultValue = "xe")
-    private String sid;
+    private String url;
 
     public static void main(String... args) {
         int exitCode = new CommandLine(new JdbcTester()).execute(args);
@@ -70,7 +60,7 @@ public class JdbcTester implements Callable<Integer> {
             String sqlQuery = "SELECT * FROM v$version";
 
             Connection conn = DriverManager.getConnection(
-                String.format("jdbc:oracle:thin:@%s:%s/%s", host, port, sid),
+                String.format("jdbc:oracle:thin:@%s", url),
                 properties
             );
             conn.setAutoCommit(false);
